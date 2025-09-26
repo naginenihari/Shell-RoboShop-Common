@@ -91,8 +91,10 @@ VALIDATE $? "Installing redis "
 java_setup(){
  dnf install maven -y &>>$LOG_FILE
  VALIDATE $? "Installed Maven" 
+
  mvn clean package &>>$LOG_FILE
  VALIDATE $? "Dependences are downloading"
+ 
  mv target/shipping-1.0.jar shipping.jar &>>$LOG_FILE
  VALIDATE $? "Rename the application sourcefile"  
 }

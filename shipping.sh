@@ -10,6 +10,7 @@ systemd_setup
 
 dnf install mysql -y &>>$LOG_FILE
 VALIDATE $? "Mysql client "
+
 mysql -h $MYSQL_HOST -uroot -pRoboShop@1 -e 'use cities' &>>$LOG_FILE
 if [ $? -ne 0 ]; then
     mysql -h $MYSQL_HOST -uroot -pRoboShop@1 < /app/db/schema.sql &>>$LOG_FILE
