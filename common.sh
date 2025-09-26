@@ -9,6 +9,7 @@ N="\e[37m"
 LOGS_FOLDER="/var/log/shell-roboshop"
 SCRIPT_NAME=$(echo $0 |cut -d '.' -f1)
 MONGODB_HOST=mongodb.naginenihariaws.store
+MYSQL_HOST=mysql.naginenihariaws.store
 SCRIPT_DIR=$PWD
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 START_TIME=$(date +%s)
@@ -94,7 +95,7 @@ java_setup(){
 
  mvn clean package &>>$LOG_FILE
  VALIDATE $? "Dependences are downloading"
- 
+
  mv target/shipping-1.0.jar shipping.jar &>>$LOG_FILE
  VALIDATE $? "Rename the application sourcefile"  
 }
