@@ -2,7 +2,7 @@
 
 source ./common.sh
 check_root
-
+redis_setup
 sed -i -e 's/127.0.0.1/0.0.0.0/g' -e '/protected-mode/ c protected-mode no' /etc/redis/redis.conf &>>$LOG_FILE
 VALIDATE $? "Allowing Remote connections to Redis"
 
