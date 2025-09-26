@@ -5,7 +5,7 @@ app_name=payment
 
 check_root
 app_setup
-python_set
+python_setup
 systemd_setup
 app_restart
 print_total_time
