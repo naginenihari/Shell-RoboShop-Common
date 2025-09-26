@@ -88,6 +88,14 @@ VALIDATE $? "Enabling redis 7"
 dnf install redis -y &>>$LOG_FILE
 VALIDATE $? "Installing redis "
 }
+java_setup(){
+ dnf install maven -y &>>$LOG_FILE
+ VALIDATE $? "Installed Maven" 
+ mvn clean package &>>$LOG_FILE
+ VALIDATE $? "Dependences are downloading"
+ mv target/shipping-1.0.jar shipping.jar &>>$LOG_FILE
+ VALIDATE $? "Rename the application sourcefile"  
+}
 print_total_time(){
 END_TIME=$(date +%s)
 TOTAL_TIME=$(( $END_TIME - $START_TIME ))
