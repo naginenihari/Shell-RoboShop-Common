@@ -96,6 +96,14 @@ java_setup(){
  mv target/shipping-1.0.jar shipping.jar &>>$LOG_FILE
  VALIDATE $? "Rename the application sourcefile"  
 }
+
+python_setup(){
+ dnf install python3 gcc python3-devel -y &>>$LOG_FILE   
+ VALIDATE $? "Installing python3"
+ pip3 install -r requirements.txt &>>$LOG_FILE
+ VALIDATE $? "Dependences are downloading"
+}
+
 print_total_time(){
 END_TIME=$(date +%s)
 TOTAL_TIME=$(( $END_TIME - $START_TIME ))
