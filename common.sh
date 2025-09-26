@@ -79,6 +79,15 @@ app_restart(){
  systemctl restart $app_name &>>$LOG_FILE
 VALIDATE $? "Restarted $app_name Service"   
 }
+
+redis_setup(){
+dnf module disable redis -y &>>$LOG_FILE
+VALIDATE $? "Disabling Deafult redis"
+dnf module enable redis:7 -y &>>$LOG_FILE
+VALIDATE $? "Enabling redis 7"
+dnf install redis -y &>>$LOG_FILE
+VALIDATE $? "Installing redis "
+}
 print_total_time(){
 END_TIME=$(date +%s)
 TOTAL_TIME=$(( $END_TIME - $START_TIME ))

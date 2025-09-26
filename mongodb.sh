@@ -1,4 +1,4 @@
-#!/nin/bash
+#!/bin/bash
 
 source ./common.sh
 
